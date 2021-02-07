@@ -25,10 +25,29 @@ require("channels")
 // External imports
 import "bootstrap";
 
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { fetchWallet } from '../components/walletButton';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-});
+  // fetchWallet();
+
+  const w = new WebSocket('wss://api-pub.bitfinex.com/ws/2')
+
+  console.log(w)
+
+  w.onmessage = (msg) => console.log(msg.data)
+
+  let msg = JSON.stringify({
+    event: 'subscribe',
+    channel: 'ticker',
+    symbol: 'tBTCUSD'
+  })
+
+  w.onopen = () => w.send(msg)
+
+  });

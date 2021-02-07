@@ -1,2 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<h4 class="key"><%= @key %></h4>
+<h4 class="secret"><%= @secret %></h4>
+
+<%= link_to 'dashboard', dashboards_path, class: 'btn btn-primary' %>
