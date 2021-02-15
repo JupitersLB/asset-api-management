@@ -1,3 +1,10 @@
+<h1>Bitfinex</h1>
+
+<div class="wallet">
+  <h3>Wallet Balance</h3>
+  <div id="wallet-balances"></div>
+</div>
+
 <%= simple_form_for :bitfinex_V2_query, url: '/post_query_v2' do |f| %>
   <%= f.input :query_v2, as: :string %>
 <% end %>
@@ -6,6 +13,6 @@
   <%= f.input :query_v1, as: :string %>
 <% end %>
 
-<%= link_to 'websocket button', websocket_path, class: 'btn btn-primary' %>
 
-<div id="wallet-display"></div>
+
+<%= link_to 'websocket button', websocket_path, remote: true, class: 'btn btn-primary' %>

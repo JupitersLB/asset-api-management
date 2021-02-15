@@ -1,6 +1,6 @@
-class BitfinexChannel < ApplicationCable::Channel
+class AccountChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "BitfinexChannel"
+    stream_from "AccountChannel"
   end
 
   def unsubscribed

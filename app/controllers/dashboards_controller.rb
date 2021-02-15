@@ -1,4 +1,5 @@
 class DashboardsController < ApplicationController
+
   def index
     gon.key = ENV["BITFINEX_API_KEY"]
     gon.secret = ENV["BITFINEX_API_SECRET"]
@@ -25,6 +26,9 @@ class DashboardsController < ApplicationController
 
   def websocket
     @response = BitfinexManager::WS::BitfinexQuerier.call
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

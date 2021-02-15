@@ -4,16 +4,29 @@ module BitfinexManager::WS
     def initialize; end
 
     def call
-      client = Bitfinex::WSv2.new({
-        :api_key => ENV['BITFINEX_API_KEY'],
-        :api_secret => ENV['BITFINEX_API_SECRET'],
-        :transform => true, # provide models as event data instead of arrays
-      })
-      client.on(:open) do
-        client.auth!
-        client.subscribe_ticker('tBTCUSD')
+      ws = WebSocket::Client::Simple.connect 'wss://api-pub.bitfinex.com/ws/2'
+      ws.on :message do |msg|
+        BitfinexChannel.broadcast_to(
+          "bitfinex_channel",
+          msg.data
+          )
       end
-      client.open!
+      msg = {
+          event: 'subscribe',
+          channel: 'ticker',
+          symbol: 'tBTCUSD'
+        }
+      ws.on :open do
+        ws.send msg.to_json
+      end
+
+      ws.on :error do |e|
+        p e
+      end
+
+      loop do
+        ws.send STDIN.gets.strip
+      end
     end
   end
 end

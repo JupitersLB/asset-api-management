@@ -97,6 +97,7 @@ GEM
       railties (>= 3.2)
     emittr (0.1.0)
     erubi (1.10.0)
+    event_emitter (0.2.6)
     eventmachine (1.2.7)
     execjs (2.7.0)
     faraday (0.15.4)
@@ -123,6 +124,7 @@ GEM
       request_store (>= 1.0)
     i18n (1.8.8)
       concurrent-ruby (~> 1.0)
+    ipaddr (1.2.2)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     json (2.1.0)
@@ -148,6 +150,8 @@ GEM
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    openssl (2.1.2)
+      ipaddr
     orm_adapter (0.5.0)
     pg (1.2.3)
     pry (0.13.1)
@@ -258,6 +262,10 @@ GEM
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
+    websocket (1.2.9)
+    websocket-client-simple (0.3.0)
+      event_emitter
+      websocket
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -277,11 +285,13 @@ DEPENDENCIES
   devise
   dotenv-rails
   emittr
+  eventmachine
   faraday_adapter_socks
   font-awesome-sass
   gon
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  openssl
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails
@@ -299,6 +309,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  websocket-client-simple
 
 RUBY VERSION
    ruby 2.6.6p146

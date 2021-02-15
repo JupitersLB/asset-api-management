@@ -29,10 +29,14 @@ gem 'gon'
 
 gem 'rack-cors'
 
+gem 'openssl'
+
 
 gem 'faraday_adapter_socks'
 gem 'emittr'
 gem 'bitfinex-rb', :require => "bitfinex"
+gem 'websocket-client-simple'
+gem 'eventmachine'
 
 
 # Reduces boot times through caching; required in config/boot.rb
