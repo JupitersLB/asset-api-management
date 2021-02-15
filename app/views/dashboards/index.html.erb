@@ -1,18 +1,33 @@
-<h1>Bitfinex</h1>
+<div id="bitfinex-api">
+  <h1>Bitfinex</h1>
 
-<div class="wallet">
-  <h3>Wallet Balance</h3>
-  <div id="wallet-balances"></div>
+  <div class="balance">
+    <h3>Balance</h3>
+    <div id="total-balance"></div>
+  </div>
+
+  <div class="wallets">
+    <h3>Wallets</h3>
+    <div id="wallet-balances"></div>
+  </div>
+
+  <div class="orders">
+    <h3>Orders</h3>
+    <div id="orders"></div>
+  </div>
+
+  <div class="postions">
+    <h3>Positions</h3>
+    <div id="postions"></div>
+  </div>
+
+  <div class="query-forms">
+    <%= simple_form_for :bitfinex_V2_query, url: '/post_query_v2' do |f| %>
+      <%= f.input :query_v2, as: :string %>
+    <% end %>
+
+    <%= simple_form_for :bitfinex_V1_query, url: '/post_query_v1' do |f| %>
+      <%= f.input :query_v1, as: :string %>
+    <% end %>
+  </div>
 </div>
-
-<%= simple_form_for :bitfinex_V2_query, url: '/post_query_v2' do |f| %>
-  <%= f.input :query_v2, as: :string %>
-<% end %>
-
-<%= simple_form_for :bitfinex_V1_query, url: '/post_query_v1' do |f| %>
-  <%= f.input :query_v1, as: :string %>
-<% end %>
-
-
-
-<%= link_to 'websocket button', websocket_path, remote: true, class: 'btn btn-primary' %>

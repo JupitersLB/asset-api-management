@@ -30,7 +30,7 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { fetchBitcoinTicker } from '../components/bitcoinTicker';
 import { initBitcoinCable } from '../channels/bitcoinChannel';
-import { initWalletCable } from '../channels/accountChannel';
+import { initAccountCable } from '../channels/accountChannel';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -39,6 +39,6 @@ document.addEventListener('turbolinks:load', () => {
 
   fetchBitcoinTicker();
   initBitcoinCable();
-  initWalletCable();
+  initAccountCable();
 
   });

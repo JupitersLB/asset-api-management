@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       authNonce: auth_nonce,
       authPayload: auth_payload,
       event: 'auth',
-      filter: ['balance']
+      filter: %w(trading wallet balance notify)
     }
 
     ws = WebSocket::Client::Simple.connect 'wss://api.bitfinex.com/ws/2'
