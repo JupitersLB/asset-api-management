@@ -6,14 +6,6 @@ class DashboardsController < ApplicationController
     gon.url = ENV['BITFINEX_URL']
   end
 
-  def wallet
-    @wallets = BitfinexManager::V2::BitfinexQuerier.call
-    # respond_to do |format|
-    #   format.js
-    # end
-    raise
-  end
-
   def query_v2
     @response = BitfinexManager::V2::BitfinexQuerier.call(v2_query_params)
     raise
@@ -24,21 +16,34 @@ class DashboardsController < ApplicationController
     raise
   end
 
-  def websocket
-    @response = BitfinexManager::WS::BitfinexQuerier.call
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def new_order
     BitfinexManager::WS::NewOrder.call(new_order_params)
+  end
+
+  def update_order
+    BitfinexManager::WS::UpdateOrder.call(update_order_params)
+  end
+
+  def cancel_order
+    BitfinexManager::WS::CancelOrder.call(cancel_order_params)
+  end
+
+  def cancel_all_orders
+    BitfinexManager::WS::CancelAllOrders.call
   end
 
   private
 
   def new_order_params
     params.require(:new_order).require(:type, :symbol, :amount, :price)
+  end
+
+  def update_order_params
+    params.require(:update_order).require(:id, :amount, :price)
+  end
+
+  def cancel_order_params
+    params.require(:cancel_order).require(:id)
   end
 
   def v2_query_params

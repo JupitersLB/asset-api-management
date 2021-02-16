@@ -1,43 +1,78 @@
 <div id="bitfinex-api">
   <h1>Bitfinex</h1>
 
-  <div class="balance">
-    <h3>Balance</h3>
-    <div id="total-balance"></div>
+  <div class="api-data">
+    <div class="row justify-content-around text-center">
+      <div class="balance col-3">
+        <h3>Balance</h3>
+        <div id="total-balance"></div>
+      </div>
+
+      <div class="wallets col-3">
+        <h3>Wallets</h3>
+        <div id="wallet-balances"></div>
+      </div>
+
+      <div class="orders col-3">
+        <h3>Orders</h3>
+        <div id="orders"></div>
+      </div>
+
+      <div class="postions col-3">
+        <h3>Positions</h3>
+        <div id="postions"></div>
+      </div>
+    </div>
   </div>
 
-  <div class="wallets">
-    <h3>Wallets</h3>
-    <div id="wallet-balances"></div>
+
+  <div class="api-interfaces mt-5">
+    <div class="row justify-content-around">
+
+      <div class="col-4 mb-3" id="rest-requests">
+        <h3>RESTful queries</h3>
+        <%= simple_form_for :bitfinex_V2_query, url: '/post_query_v2' do |f| %>
+          <%= f.input :query_v2, as: :string %>
+        <% end %>
+
+        <%= simple_form_for :bitfinex_V1_query, url: '/post_query_v1' do |f| %>
+          <%= f.input :query_v1, as: :string %>
+        <% end %>
+      </div>
+
+      <div class="col-4 mb-3" id="new-order">
+        <h3>New Order</h3>
+        <%= simple_form_for :new_order, url: '/new_order' do |f| %>
+          <%= f.input :type, as: :string %>
+          <%= f.input :symbol, as: :string %>
+          <%= f.input :amount, as: :string %>
+          <%= f.input :price, as: :string %>
+         <%= f.submit 'Send Order', class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+
+      <div class="col-4 mb-3" id="update-order">
+        <h3>Update Order</h3>
+        <%= simple_form_for :update_order, url: '/update_order' do |f| %>
+          <%= f.input :id, as: :integer %>
+          <%= f.input :amount, as: :string %>
+          <%= f.input :price, as: :string %>
+          <%= f.submit 'Update Order', class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+
+      <div class="col-4 mb-3" id="cancel-order">
+        <h3>Cancel Order</h3>
+        <%= simple_form_for :cancel_order, url: '/cancel_order' do |f| %>
+          <%= f.input :id, as: :integer %>
+          <%= f.submit 'Cancel Order', class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+      <div class="col-4 mb-3" id="cancel-all-orders">
+        <h3>Cancel All Orders</h3>
+        <%= link_to 'Cancel all Orders?', cancel_all_orders_path, mathod: :post, class: 'btn btn-secondary'%>
+    </div>
   </div>
 
-  <div class="orders">
-    <h3>Orders</h3>
-    <div id="orders"></div>
-  </div>
-
-  <div class="postions">
-    <h3>Positions</h3>
-    <div id="postions"></div>
-  </div>
-
-  <div class="query-forms" id="rest-requests">
-    <%= simple_form_for :bitfinex_V2_query, url: '/post_query_v2' do |f| %>
-      <%= f.input :query_v2, as: :string %>
-    <% end %>
-
-    <%= simple_form_for :bitfinex_V1_query, url: '/post_query_v1' do |f| %>
-      <%= f.input :query_v1, as: :string %>
-    <% end %>
-  </div>
-
-  <div id="new-order">
-    <%= simple_form_for :new_order, url: '/new_order' do |f| %>
-      <%= f.input :type, as: :string %>
-      <%= f.input :symbol, as: :string %>
-      <%= f.input :amount, as: :string %>
-      <%= f.input :price, as: :string %>
-    <% end %>
-  </div>
 
 </div>
