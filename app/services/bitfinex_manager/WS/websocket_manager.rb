@@ -34,16 +34,18 @@ module BitfinexManager::WS
       ws.on :open do
         ws.send payload.to_json
       end
-      websocket_no_request(ws)
-    end
-
-    def websocket_no_request(ws)
       ws.on :message do |msg|
+        websocket_with_request(msg, ws) unless @request.nil?
         ActionCable.server.broadcast(
           "AccountChannel",
           msg.data
         )
       end
+    end
+
+    def websocket_with_request(msg, ws)
+      response = JSON.parse(msg)
+      ws.send @request.to_json if response[1] == 'ws'
     end
   end
 end

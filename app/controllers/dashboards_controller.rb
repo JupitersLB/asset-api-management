@@ -31,7 +31,15 @@ class DashboardsController < ApplicationController
     end
   end
 
+  def new_order
+    BitfinexManager::WS::NewOrder.call(new_order_params)
+  end
+
   private
+
+  def new_order_params
+    params.require(:new_order).require(:type, :symbol, :amount, :price)
+  end
 
   def v2_query_params
     params.require(:bitfinex_V2_query).require(:query_v2)

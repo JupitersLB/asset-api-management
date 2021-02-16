@@ -31,4 +31,13 @@
     <% end %>
   </div>
 
+  <div id="new-order">
+    <%= simple_form_for :new_order, url: '/new_order' do |f| %>
+      <%= f.input :type, as: :string %>
+      <%= f.input :symbol, as: :string %>
+      <%= f.input :amount, as: :string %>
+      <%= f.input :price, as: :string %>
+    <% end %>
+  </div>
+
 </div>
