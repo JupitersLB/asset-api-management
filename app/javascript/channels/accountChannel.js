@@ -8,7 +8,7 @@ const initAccountCable = () => {
       connected: () => { console.log('account connected')},
       received: data => {
         const response = JSON.parse(data);
-        console.log(response)
+        console.log(response);
         switch (response[1]) {
           case 'hb':
             console.log('it was case hb');

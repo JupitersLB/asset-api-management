@@ -21,7 +21,7 @@
     <div id="postions"></div>
   </div>
 
-  <div class="query-forms">
+  <div class="query-forms" id="rest-requests">
     <%= simple_form_for :bitfinex_V2_query, url: '/post_query_v2' do |f| %>
       <%= f.input :query_v2, as: :string %>
     <% end %>
@@ -30,4 +30,5 @@
       <%= f.input :query_v1, as: :string %>
     <% end %>
   </div>
+
 </div>
