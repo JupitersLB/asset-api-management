@@ -1,0 +1,7 @@
+console.log('click')
+console.log(" <%= @response %> ")
+console.log("<%= @hello %>")
+var apiDisplay = document.getElementById('kraken-api-response');
+apiDisplay.innerHTML = "<%= @response.to_json %>"
+
+

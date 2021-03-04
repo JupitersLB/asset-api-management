@@ -31,6 +31,8 @@ gem 'rack-cors'
 
 gem 'openssl'
 
+gem 'kraken_ruby_client', github: 'jonatack/kraken_ruby_client'
+
 
 gem 'faraday_adapter_socks'
 gem 'emittr'

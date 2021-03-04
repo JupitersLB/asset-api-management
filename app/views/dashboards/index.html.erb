@@ -70,9 +70,23 @@
       </div>
       <div class="col-4 mb-3" id="cancel-all-orders">
         <h3>Cancel All Orders</h3>
-        <%= link_to 'Cancel all Orders?', cancel_all_orders_path, mathod: :post, class: 'btn btn-secondary'%>
+        <%= link_to 'Cancel all Orders?', cancel_all_orders_path, method: :post, class: 'btn btn-secondary'%>
+      </div>
     </div>
   </div>
+</div>
 
+<div id="kraken-api">
+  <h1>Kraken</h1>
+  <div class="api-interfaces mt-5">
+    <div class="row justify-content-around">
+      <div class="col-4 mb-3" id="kraken-test">
+        <h1 id="kraken-api-response"></h1>
+        <h3>KRAKEN Test</h3>
+        <%= link_to 'KRAKEN', kraken_api_manager_path, method: :post, remote: true, class: 'btn btn-secondary'%>
+      </div>
+
+    </div>
+  </div>
 
 </div>

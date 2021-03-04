@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/update_order', to: 'dashboards#update_order', as: 'update_order'
   post '/cancel_order', to: 'dashboards#cancel_order', as: 'cancel_order'
   post '/cancel_all_orders', to: 'dashboards#cancel_all_orders', as: 'cancel_all_orders'
+  post '/kraken_api_manager', to: 'dashboards#kraken_api_manager', as: 'kraken_api_manager'
 
 
 

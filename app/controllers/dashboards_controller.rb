@@ -32,6 +32,13 @@ class DashboardsController < ApplicationController
     BitfinexManager::WS::CancelAllOrders.call
   end
 
+  def kraken_api_manager
+    @response = KrakenManager::Client::ClientManager.call('trade volume')
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def new_order_params
