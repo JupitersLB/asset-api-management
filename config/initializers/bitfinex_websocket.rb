@@ -13,11 +13,3 @@ msg = {
 ws.on :open do
   ws.send msg.to_json
 end
-
-# ws.on :error do |e|
-#   p e
-# end
-
-# loop do
-#   ws.send STDIN.gets.strip
-# end

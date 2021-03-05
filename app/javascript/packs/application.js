@@ -32,6 +32,7 @@ import { fetchBitcoinTicker } from '../components/bitcoinTicker';
 import { initBitcoinCable } from '../channels/bitcoinChannel';
 import { initAccountCable } from '../channels/accountChannel';
 import { initBitflyerCable } from '../channels/bitflyerChannel';
+import { initKrakenCable } from '../channels/kraken_channel';
 
 
 
@@ -43,5 +44,6 @@ document.addEventListener('turbolinks:load', () => {
   initBitcoinCable();
   initAccountCable();
   initBitflyerCable();
+  initKrakenCable();
 
   });

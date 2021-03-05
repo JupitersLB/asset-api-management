@@ -1,9 +1,6 @@
 class DashboardsController < ApplicationController
 
   def index
-    gon.key = ENV["BITFINEX_API_KEY"]
-    gon.secret = ENV["BITFINEX_API_SECRET"]
-    gon.url = ENV['BITFINEX_URL']
   end
 
   def query_v2
