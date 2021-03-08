@@ -19,7 +19,7 @@ const fetchCoinCapData = () => {
       .then(result => {
         let obj = JSON.parse(result)
         obj.data.forEach(d => {
-          exchangeIds[key].push(d)
+          exchangeIds[key].push({id: d.baseSymbol+d.quoteSymbol, base: d.baseSymbol, qoute: d.quoteSymbol})
         })
         console.log(exchangeIds)
         // obj.data.forEach(d => {
