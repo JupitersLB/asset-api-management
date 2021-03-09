@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_043000) do
+ActiveRecord::Schema.define(version: 2021_03_09_043311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: :cascade do |t|
+    t.string "external_id"
+    t.string "base"
+    t.string "quote"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "exchange_assets", force: :cascade do |t|
+    t.bigint "exchange_id", null: false
+    t.bigint "asset_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["asset_id"], name: "index_exchange_assets_on_asset_id"
+    t.index ["exchange_id"], name: "index_exchange_assets_on_exchange_id"
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +51,6 @@ ActiveRecord::Schema.define(version: 2021_02_04_043000) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "exchange_assets", "assets"
+  add_foreign_key "exchange_assets", "exchanges"
 end
