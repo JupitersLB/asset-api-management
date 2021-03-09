@@ -29,6 +29,8 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { fetchBitcoinTicker } from '../components/bitcoinTicker';
+import { coincapTicker } from '../components/assetTicker';
+
 // import { fetchCoinCapData } from '../components/coinCap';
 import { initBitcoinCable } from '../channels/bitcoinChannel';
 import { initAccountCable } from '../channels/accountChannel';
@@ -42,6 +44,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   fetchBitcoinTicker();
+  coincapTicker();
   // fetchCoinCapData();
   initBitcoinCable();
   initAccountCable();

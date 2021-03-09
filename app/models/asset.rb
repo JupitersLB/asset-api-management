@@ -4,4 +4,8 @@ class Asset < ApplicationRecord
 
   validates :external_id, uniqueness: true, presence: true
 
+  def market
+    {id: external_id, base: base, quote: quote}
+  end
+
 end
